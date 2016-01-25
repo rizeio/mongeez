@@ -30,11 +30,11 @@ public class ChangeSetExecutor {
     private String context = null;
 
     public ChangeSetExecutor(Mongo mongo, String dbName, String context) {
-        this(mongo, dbName, context, null);
+        this(mongo, dbName, context, null, false);
     }
 
-    public ChangeSetExecutor(Mongo mongo, String dbName, String context, MongoAuth auth) {
-        dao = new MongeezDao(mongo, dbName, auth);
+    public ChangeSetExecutor(Mongo mongo, String dbName, String context, MongoAuth auth, boolean useProvidedClient) {
+        dao = new MongeezDao(mongo, dbName, auth, useProvidedClient);
         this.context = context;
     }
 

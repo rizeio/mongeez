@@ -39,10 +39,11 @@ public class Mongeez {
     private ChangeSetFileProvider changeSetFileProvider = null;
     private ChangeSetsValidator changeSetsValidator = new DefaultChangeSetsValidator();
     private String context = null;
+    private boolean useProvidedClient = false;
 
     public void process() {
         List<ChangeSet> changeSets = getChangeSets();
-        new ChangeSetExecutor(mongo, dbName, context, auth).execute(changeSets);
+        new ChangeSetExecutor(mongo, dbName, context, auth, useProvidedClient).execute(changeSets);
     }
 
     private List<ChangeSet> getChangeSets() {
@@ -106,4 +107,7 @@ public class Mongeez {
         this.context = context;
     }
 
+    public void setUseProvidedClient(boolean useProvidedClient) {
+        this.useProvidedClient = useProvidedClient;
+    }
 }
